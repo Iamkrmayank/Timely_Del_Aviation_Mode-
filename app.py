@@ -75,6 +75,14 @@ def main():
         X = df.drop(columns=['Quality Status'])
         y = df['Quality Status']
         
+        # Check data types and for any NaNs or infinities
+        st.write("Data Types of Features:")
+        st.write(X.dtypes)
+        
+        st.write("Check for NaNs and Infs in Features:")
+        st.write(X.isna().sum())
+        st.write(np.isinf(X).sum())
+        
         # Handle missing values
         imputer = SimpleImputer(strategy='mean')
         X = imputer.fit_transform(X)
